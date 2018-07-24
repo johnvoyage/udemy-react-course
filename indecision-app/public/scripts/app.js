@@ -1,84 +1,35 @@
-'use strict';
-
-console.log('App.js is running');
-
-var app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
-};
-
-var onFormSubmit = function onFormSubmit(event) {
-  event.preventDefault();
-
-  var option = event.target.elements.option.value;
-
-  if (option) {
-    app.options.push(option);
-    event.target.elements.option.value = '';
-    render();
-  }
-};
-
-var onRemoveAllClick = function onRemoveAllClick(event) {
-  app.options = [];
-  render();
-};
+"use strict";
 
 var appRoot = document.getElementById("app");
 
-var numbers = [55, 101, 1000];
+var app = {
+  visibility: false
+};
+
+var visibilityClicked = function visibilityClicked(event) {
+  app.visibility = !app.visibility;
+  render();
+};
 
 var render = function render() {
   var template = React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h1',
+      "h1",
       null,
-      app.title
-    ),
-    app.subtitle && React.createElement(
-      'p',
-      null,
-      app.subtitle
+      "Visibility Toggle"
     ),
     React.createElement(
-      'p',
+      "button",
+      { onClick: visibilityClicked },
+      app.visibility ? "Hide details" : "Show details"
+    ),
+    app.visibility ? React.createElement(
+      "p",
       null,
-      app.options.length > 0 ? 'Here are your options' : 'No options'
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length
-    ),
-    React.createElement(
-      'button',
-      { onClick: onRemoveAllClick },
-      'Remove All'
-    ),
-    React.createElement(
-      'ol',
-      null,
-      app.options.map(function (option, index) {
-        return React.createElement(
-          'li',
-          { key: index },
-          option
-        );
-      })
-    ),
-    React.createElement(
-      'form',
-      { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option' }),
-      React.createElement(
-        'button',
-        null,
-        'Add Option'
-      )
-    )
+      "The details!"
+    ) : null
   );
 
   ReactDOM.render(template, appRoot);
