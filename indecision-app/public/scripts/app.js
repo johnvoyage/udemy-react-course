@@ -1,18 +1,16 @@
 "use strict";
 
-var appRoot = document.getElementById("app");
-
 var app = {
   visibility: false
 };
 
-var visibilityClicked = function visibilityClicked(event) {
+var toggleVisibility = function toggleVisibility(event) {
   app.visibility = !app.visibility;
   render();
 };
 
 var render = function render() {
-  var template = React.createElement(
+  var jsx = React.createElement(
     "div",
     null,
     React.createElement(
@@ -22,17 +20,17 @@ var render = function render() {
     ),
     React.createElement(
       "button",
-      { onClick: visibilityClicked },
+      { onClick: toggleVisibility },
       app.visibility ? "Hide details" : "Show details"
     ),
-    app.visibility ? React.createElement(
+    app.visibility && React.createElement(
       "p",
       null,
       "The details!"
-    ) : null
+    )
   );
 
-  ReactDOM.render(template, appRoot);
+  ReactDOM.render(jsx, document.getElementById("app"));
 };
 
 render();
