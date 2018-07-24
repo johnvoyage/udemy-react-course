@@ -1,7 +1,35 @@
 console.log('App.js is running');
 
-// JSX - JavaScript XML
-const template = <h1>Indecision App</h1>
-const appRoot = document.getElementById("app")
+const app = {
+  title: `Indecision App`,
+  subtitle: `Put your life in the hands of a computer`
+};
 
-ReactDOM.render(template, appRoot);
+const template = (
+  <div>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
+    <ol>
+      <li>Item One</li>
+      <li>Item Two</li>
+    </ol>
+  </div>
+);
+
+const user = {
+  name: 'John York',
+  age: 28,
+  location: 'NYC',
+};
+
+const templateTwo = (
+  <div>
+    <h1>{user.name.toUpperCase() + '!'}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
+  </div>
+);
+
+const appRoot = document.getElementById("app");
+
+ReactDOM.render(templateTwo, appRoot);
