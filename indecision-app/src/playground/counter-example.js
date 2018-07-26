@@ -28,9 +28,15 @@ class Counter extends React.Component {
   };
 
   handleReset() {
+    this.setState(() => {
+      return {
+        count: 0
+      };
+    });
+
     this.setState((prevState) => {
       return {
-        count: 0,
+        count: prevState.count + 1
       };
     });
   };
