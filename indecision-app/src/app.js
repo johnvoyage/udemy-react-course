@@ -12,6 +12,20 @@ class IndecisionApp extends React.Component {
     };
   };
 
+  componentDidMount() {
+    console.log('fetching data');
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('saving data');
+    // console.log('prevProps', prevProps);
+    // console.log('prevState', prevState);
+  };
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  };
+
   handleDeleteOptions() {
     this.setState(() => ({
       options: [],
