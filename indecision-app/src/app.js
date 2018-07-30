@@ -30,4 +30,4 @@ class NewSyntax {
 
 const newSyntax = new NewSyntax();
 const newGetGreeting = newSyntax.getGreeting;
-console.log(newGetGreeting);
+console.log(newGetGreeting());
